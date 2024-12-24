@@ -68,8 +68,9 @@ const QuizPage = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-custom-bg bg-cover bg-left-bottom">
-    <div className="p-6 max-w-lg w-full bg-white shadow-2xl rounded-xl text-gray-900">
-      <h1 className="text-center text-3xl font-bold mb-6 text-teal-700">Quiz Game</h1>
+      <div className="p-6 max-w-lg w-full bg-white shadow-2xl rounded-xl text-gray-900">
+        <h1 className="text-center text-3xl font-bold mb-6 text-teal-700">Quiz Game</h1>
+
         {loading ? (
           <LoadingSpinner />
         ) : !questions.length ? (
@@ -86,10 +87,9 @@ const QuizPage = () => {
           </div>
         ) : (
           <div>
-            <h3
-              className="text-lg font-semibold mb-4"
-              dangerouslySetInnerHTML={{ __html: questions[currentQuestion].question }}
-            />
+            <h3 className="text-lg font-semibold mb-4">
+              Question {currentQuestion + 1}: <span dangerouslySetInnerHTML={{ __html: questions[currentQuestion].question }} />
+            </h3>
             <div className="space-y-3 mt-4">
               {questions[currentQuestion].options.map((option, index) => {
                 let optionStyle = "bg-teal-500 hover:bg-teal-600 text-white";
