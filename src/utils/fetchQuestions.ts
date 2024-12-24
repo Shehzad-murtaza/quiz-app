@@ -20,9 +20,8 @@ interface APIResponse {
 export const fetchQuestions = async (): Promise<Question[]> => {
   try {
     const response = await fetch("https://opentdb.com/api.php?amount=10&type=multiple");
-    const data: APIResponse = await response.json();  // Specifying the API response type
+    const data: APIResponse = await response.json();
 
-    // Transform API data to match our Question and Option types
     const questions: Question[] = data.results.map((item) => {
       const options: Option[] = [
         ...item.incorrect_answers.map((answer) => ({
@@ -35,7 +34,6 @@ export const fetchQuestions = async (): Promise<Question[]> => {
         },
       ];
 
-      // Shuffle options for randomness
       options.sort(() => Math.random() - 0.5);
 
       return {

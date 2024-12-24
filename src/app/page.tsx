@@ -6,7 +6,6 @@ import ResetButton from '@/components/ResetButton';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { fetchQuestions } from '@/utils/fetchQuestions';
 
-// Define types for question and options
 interface Option {
   text: string;
   isCorrect: boolean;
@@ -65,12 +64,12 @@ const QuizPage = () => {
     if (showResult) {
       localStorage.setItem('quizScore', score.toString());
     }
-  }, [showResult, score]); // Fixed useEffect dependency
+  }, [showResult, score]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-sky-300 via-teal-200 to-yellow-200">
-      <div className="p-6 max-w-lg w-full bg-white shadow-2xl rounded-xl text-gray-900">
-        <h1 className="text-center text-3xl font-bold mb-6 text-teal-700">Quiz Game</h1>
+    <div className="flex items-center justify-center min-h-screen bg-custom-bg bg-cover bg-left-bottom">
+    <div className="p-6 max-w-lg w-full bg-white shadow-2xl rounded-xl text-gray-900">
+      <h1 className="text-center text-3xl font-bold mb-6 text-teal-700">Quiz Game</h1>
         {loading ? (
           <LoadingSpinner />
         ) : !questions.length ? (
